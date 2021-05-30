@@ -1,0 +1,311 @@
+#include <iostream>
+#include "coordinates.h"
+using namespace std;
+//���������� ������ ������������� ����� ���������
+void coordinates::Init(double F, double S) {
+	first = F;
+	second = S;
+}
+//���������� ������ ��� ������ ��������� ����� ���������
+void coordinates::Read() {
+	cout << "\nx = "; cin >> first;
+	cout << "y = "; cin >> second;
+}
+//���������� ������ ��� ������ �������� ����� ���������
+void coordinates::Show() {
+	cout << "\n����������: (" << first;
+	cout << " ; " << second;
+	cout << ")\n";
+}
+//���������� ������ ���������� ����������
+double coordinates::distance() {
+	return sqrt(pow(first, 2) + pow(second, 2));
+}
+#pragma once
+struct coordinates {
+	double first;
+	double second;
+	void Init(double, double); //����� ������������� �����
+	void Read(); //����� ������ �������� �����
+	void Show(); //����� ������ �������� �����
+	double distance(); //����� ���������� ����������
+};
+
+#include <iostream>
+#include "coordinates.h"
+using namespace std;
+coordinates make_coordinates(double F, double S) {
+	coordinates temp;
+	temp.Init(F,S);
+	return temp;
+}
+void main() {
+	system("chcp 1251");
+	//����� main
+	coordinates A;
+	coordinates B;
+	cout << "\n����� �\nx = 4.5\ny = 3.6";
+	A.Init(4.5, 3.6);
+	cout << "\n\n����� �";
+	A.Show();
+	cout << "\n���������� �� ������ ��������� �� ����� � = " << A.distance() << endl;
+	cout << "\n����� B";
+	B.Read();
+	cout << "\n����� B";
+	B.Show();
+	cout << "\n���������� �� ������ ��������� �� ����� B = " << B.distance() << endl;
+	//���������
+	coordinates* X = new coordinates;
+	cout << "\n����� X\nx = 2.4\ny = 0.5";
+	X->Init(2.4, 0.5);
+	cout << "\n\n����� X";
+	X->Show();
+	cout << "\n���������� �� ������ ��������� �� ����� X = " << X->distance();
+	delete X;
+	//������
+	coordinates mas[3];
+	for (int i = 0; i < 3; i++) {
+		cout << "\n\n����� C" << i + 1;
+		mas[i].Read();
+		cout << "\n����� C" << i + 1;
+		mas[i].Show();
+		cout << "\n���������� �� ������ ��������� �� ����� C" << i+1 << " = " << mas[i].distance();
+	}
+	//������������ ������
+	coordinates* p_mas = new coordinates[3];
+	for (int i = 0; i < 3; i++) {
+		cout << "\n\n����� D" << i + 1;
+		p_mas[i].Read();
+		cout << "\n����� D" << i + 1;
+		p_mas[i].Show();
+		cout << "\n���������� �� ������ ��������� �� ����� D" << i + 1 << " = " << p_mas[i].distance();
+	}
+	delete[] p_mas;
+	//����� ������� make_coordinates
+	double x, y;
+	cout << "\n\n����� F";
+	cout << "\nx = "; cin >> x;
+	cout << "y = "; cin >> y;
+	coordinates F = make_coordinates(x, y);
+	cout << "\n����� F";
+	F.Show();
+	cout << "\n���������� �� ������ ��������� �� ����� F = " << F.distance() << endl;
+	system("pause");
+}
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab 18.1 (Classes, Objects, Encapsulation)", "Lab 18.1 (Classes, Objects, Encapsulation).vcxproj", "{7EE7388E-DF93-4571-A7AD-5FD5FA7513BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7EE7388E-DF93-4571-A7AD-5FD5FA7513BB}.Debug|x64.ActiveCfg = Debug|x64
+		{7EE7388E-DF93-4571-A7AD-5FD5FA7513BB}.Debug|x64.Build.0 = Debug|x64
+		{7EE7388E-DF93-4571-A7AD-5FD5FA7513BB}.Debug|x86.ActiveCfg = Debug|Win32
+		{7EE7388E-DF93-4571-A7AD-5FD5FA7513BB}.Debug|x86.Build.0 = Debug|Win32
+		{7EE7388E-DF93-4571-A7AD-5FD5FA7513BB}.Release|x64.ActiveCfg = Release|x64
+		{7EE7388E-DF93-4571-A7AD-5FD5FA7513BB}.Release|x64.Build.0 = Release|x64
+		{7EE7388E-DF93-4571-A7AD-5FD5FA7513BB}.Release|x86.ActiveCfg = Release|Win32
+		{7EE7388E-DF93-4571-A7AD-5FD5FA7513BB}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {378CA375-7517-4E26-9931-EB5C62AC5182}
+	EndGlobalSection
+EndGlobal
+
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{7ee7388e-df93-4571-a7ad-5fd5fa7513bb}</ProjectGuid>
+    <RootNamespace>Lab181ClassesObjectsEncapsulation</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="coordinates.cpp" />
+    <ClCompile Include="Lab 18.1 %28Classes, Objects, Encapsulation%29.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="coordinates.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Lab 18.1 %28Classes, Objects, Encapsulation%29.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="coordinates.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="coordinates.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+</Project>
